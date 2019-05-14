@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<HTML lang="fr">
+
+	<head>
+	
+		<meta charset="utf-8">
+		<title>Blog d'Antoine</title>
+		<meta name="keywords" content="Blog, Antoine, Cornwell, Guitare">
+		<meta name="description" content="Blog personnel">
+		<link rel="stylesheet" href="css/index2.css" media="all">
+		<?php if ($page=="profil"): ?>
+		<script src="js/jquery.js"></script>
+		<script src="js/profil.js"></script>
+		<?php endif ?>
+		
+		<?php if ($page=="signup_form"): ?>
+		<script src="js/jquery.js"></script>
+		<script src="js/signup.js"></script>
+		<?php endif ?>
+	</head>
+
+	<body>	
+	
+	<header>
+	<section id="titrePrincipal">
+			<h1><a id="accueil" href="index.php">Antoine's Blog</a></h1>
+		</section>
+		
+		<?php if(array_key_exists("Messages", $_SESSION)): ?>
+			<?php foreach($flash->fetchAll() as $message):?>
+			<small id="messages"><?= $message ?></small>
+			<?php endforeach?>
+		<?php endif ?>
+		
+		<?php if (!Session::isAuthenticated()):?>
+		<section id="connexion">
+			<small><a href="signup_form.php">Inscription</a></small>
+			<form action="connexion.php" method="POST">
+				<label for="identifiant">Email:</label>
+					<input type="text" name="identifiant" placeholder="votre Email / Pseudo"/>
+				<label for="pwd">Password:</label>
+				<input type="password" name="pwd"/>
+				<input type="submit" value="Se connecter"/>
+			</form>					
+		</section>
+		<?php endif ?>
+		
+		
+		<?php if (Session::isAuthenticated()):?>
+		<section id="connecter">
+			<p>Bienvenue <?php echo $_SESSION['nick'] ?> ! </p>
+			<br/>
+			<a href="profil.php">Mon Profil </a>
+			<br/>
+			<a href="deconnexion.php" > Se Déconnecter </a>			
+		</section>
+		<?php endif ?>
+		
+	</header>
+	
+	<main>		
+		<?php include ($page.'.phtml'); ?>
+	</main>
+	
+	<footer id="bas">
+		<a href="#">Mentions Légales</a>
+	</footer>
+	
+	</body>
+</html>

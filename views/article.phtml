@@ -1,0 +1,53 @@
+
+		<div id="haut">
+			<section>
+					<h2 class="titre"><?php echo $post["Title"]; ?></h2>
+					<header>						
+						<a id="pCat" href="triCategorie.php?categorie=<?php echo $post["Name"]; ?>"><?php echo $post["Name"]; ?></a>
+						<small class="date"><?php echo (new DateTime($post["CreatedAt"]))->format('d/m/Y - H:i'); ?></small>
+						<a id="pA" href="triAuteur.php?auteur=<?php echo $post['Auteur'];?>">Auteur: <?php echo $post['Auteur']; ?></a>
+					</header>
+					<article>				
+						<p><?php echo $post['Content']; ?></p>
+						
+						<?php if (!empty($post['Image'])): ?>
+						<div id="img">
+							<img src="img/<?php echo $post['Image']; ?>"></img>
+						</div>
+						<?php endif ?>
+					</article>						
+			</section>				
+		</div>
+		
+			
+			
+				
+			<section id="espaceCommentaire">
+				<?php if (Session::isAuthenticated()): ?>
+				<section id="form">
+					<h3 class="titre"> Ajouter un commentaire: </h3>
+					<form action="commentaire.php?id=<?php echo $id; ?>" method="POST">
+						<label for="commentaire">Votre Commentaire</label>
+						<textarea  rows="2" cols="25" id="commentaire" name="commentaire" placeholder="Entrez un commentaire"/></textarea>
+						<br/>
+						<input type="submit" value="Poster !"/>		
+					</form>
+				</section>
+				<?php endif ?>
+				<section id="nonCo">
+				<?php if (!Session::isAuthenticated()): ?>
+				<p> Vous devez être connecté pour écrire un commentaire </p>
+				<a href="signup_form.php">Inscription</a>
+				<?php endif ?>
+			</section>
+				<h2 class="titre">Commentaire(s)</h2>
+				<?php foreach($comments as $comment): ?>
+				<div>
+					<small id="nick"><?php echo $comment["Nickname"]; ?></small>
+					<small class="date"><?php echo (new DateTime($comment["CreatedAt"]))->format('d/m/Y - H:i'); ?></small>
+					<p id="comment"><?php echo $comment["Content"]; ?></p>
+				</div>
+				
+				<?php endforeach; ?>
+			</section>
+	

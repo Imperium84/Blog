@@ -1,0 +1,22 @@
+<ul>
+	<?php foreach($posts as $post):?>
+	<li>
+		<section id="articleSection">
+			<h2 class="titre"><a href="article.php?id=<?php echo $post['Id']; ?>"><?php echo $post["Title"]; ?></a></h2>
+			<header>					
+				<a id="pCat" href="triCategorie.php?categorie=<?php echo $post["Name"]; ?>"><?php echo $post["Name"]; ?></a>
+				<small class="date"><?php echo (new DateTime($post["CreatedAt"]))->format('d/m/Y - H:i'); ?></small>
+				<a id="pA" href="triAuteur.php?auteur=<?php echo $post['Auteur'];?>">Auteur: <?php echo $post['Auteur']; ?></a>
+			</header>
+			<article>				
+				<p><?php echo substr($post['Content'], 0, 150); ?>...</p>
+			</article>		
+			<footer>
+				<a id="suite" href="article.php?id=<?php echo $post['Id']; ?>">Lire la suite</a>
+			</footer>				
+		</section>
+	</li>
+	<?php endforeach?>
+</ul>	
+
+

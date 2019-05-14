@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Carolingia';
+    src: url('carolingia/DorovarFLF-Carolus.eot');
+    src: url('carolingia/DorovarFLF-Carolus.eot?#iefix') format('embedded-opentype'),
+        url('carolingia/DorovarFLF-Carolus.woff2') format('woff2'),
+        url('carolingia/DorovarFLF-Carolus.woff') format('woff'),
+        url('carolingia/DorovarFLF-Carolus.ttf') format('truetype'),
+        url('carolingia/DorovarFLF-Carolus.svg#DorovarFLF-Carolus') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+

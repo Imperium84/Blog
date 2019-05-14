@@ -1,0 +1,32 @@
+
+<h2 class="titre" id="subscribe">Inscription</h2>
+<form id="formInscription" action="signup_form.php" method="POST" >
+	<small>Tout les champs sont obligatoire</small>
+	<br/> 	
+		<?php if(array_key_exists("Messages", $_SESSION)): ?>
+			<?php foreach($flash->fetchAll() as $message):?>
+			<small id="messages"><?= $message ?></small>
+			<?php endforeach?>
+		<?php endif ?>
+	<br/>
+	<label for="email">Adresse Mail*:</label>
+	<input id="email" type="email" name="email" required/>
+	<br/>
+	<label for="nickname">Votre pseudo*:</label>
+	<input id="nickname" type="text" name="nickname" required/>
+	<br/>
+	<label for="motDePasse">Mot de passe*:</label>
+	<input type="password" name="motDePasse" required/>
+	<br/>
+	<label for="motDePasseConfirm">Confirmation*:</label>
+	<input type="password" name="motDePasseConfirm" required/>
+	<br/>
+	<label for="sexe">Sexe*: </label>
+	<input type="radio" name="sexe" value="Woman" checked /><small>Femme</small>
+	<input type="radio" name="sexe" value="Man" /><small>Homme</small>
+	<br/>
+	<input type="hidden">
+	<input type="submit" value="S'inscrire"/>
+	
+</form>
+
